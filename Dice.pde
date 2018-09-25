@@ -1,15 +1,16 @@
-void setup()
-{
-  size (500, 110);
+void setup(){
+  size (700, 320);
 	noLoop();
 }
-void draw()
-{
-	Die bob = new Die(5, 5);
-  bob.show();
+void draw(){
+  for (int d = 5; d < 320; d += 105){
+    for (int c = 5; c < 320; c +=105){
+      Die playerA = new Die(c, d);
+      playerA.show();
+    }
+  }
 }
-void mousePressed()
-{
+void mousePressed(){
 	redraw();
 }
 class Die //models one single dice cube
@@ -25,17 +26,15 @@ class Die //models one single dice cube
 	}
   
   //function to randomly determine the value of the die
-	void roll()
-	{
+	void roll(){
 		num = (int)(Math.random() * 6) + 1;
 	}
 
   //function to show die
-	void show()
-	{
+	void show(){
 		fill(255);
     rect(myX, myY, 100, 100);
-    sideFace(2);
+    sideFace(num);
 	}
 
   //function to show the face
@@ -46,9 +45,37 @@ class Die //models one single dice cube
     //picks a random side to show depending on the roll performed
     if (a == 1){
       ellipse(myX + 50, myY + 50, 40, 40);
-    } else if (a == 2){
+    }
+    else if (a == 2){
       ellipse(myX + 32, myY + 32, 30, 30);
       ellipse(myX + 68, myY + 68, 30, 30);
+    }
+    else if (a == 3){
+      for (int j = 20; j <= 100; j +=30){
+        ellipse(j + myX, j + myY, 20, 20);
+      }
+    }
+    else if (a == 4){
+      for (int j = 25; j <= 100; j +=50){
+        for (int i = 25; i <= 100; i +=50){
+          ellipse(i + myX, j + myY, 20, 20);
+        }
+      }
+    }
+    else if (a == 5) {
+      for (int j = 25; j <= 100; j +=50){
+        for (int i = 25; i <= 100; i +=50){
+          ellipse(i + myX, j + myY, 20, 20);
+        }
+      }
+      ellipse(myX + 50, myY + 50, 20, 20);
+    }
+    else {
+      for (int j = 20; j <= 100; j +=30){
+        for (int i = 30; i <= 100; i +=40){
+          ellipse(i + myX, j + myY, 20, 20);
+        }
+      }
     }
   }
 }
