@@ -1,33 +1,34 @@
+int counter = 0;
+
+//variables to track 2 different dice totals
+int firstPlayerScore = 0;
+int secondPlayerScore = 0;
+
+//variables to track number of wins
+int playerAMoney = 0;
+int playerBMoney = 0;
+
 void setup(){
+  //sets up background
   size (700, 520);
   background(#0358FF);
+  
+  //sets up all the static text
   fill(0);
   textSize(20);
-  text("Welcome to Dice Game", 280, 10);
+  text("Welcome to Dice Game", 240, 40);
+  text("Player A", 120, 80);
+  text("Player B", 500, 80);
+  
+  //sets up no loop and text size of rest of program
 	noLoop();
   textSize(11);
+  
+  //so it doesnt look wierd at the start
+  rollPlayerB();
 }
 void draw(){
-  //variables to track 2 different dice totals
-  int firstPlayerScore = 0;
-  int secondPlayerScore = 0;
-  
-  //2 for loops to make 2 sets of 3-by-3 dice squares
-  for (int d = 105; d < 420; d += 105){
-    for (int c = 5; c < 320; c +=105){
-      Die playerA = new Die(c, d);
-      playerA.show();
-      firstPlayerScore += playerA.num;
-    }
-  }
-  
-  for (int f = 105; f < 420; f += 105){
-    for (int e = 595; e > 320; e = e - 105){
-      Die playerB = new Die(e, f);
-      playerB.show();
-      secondPlayerScore += playerB.num;
-    }
-  }
+  playerSelector();
   
   //prints out each player's score
   scoreTextBox("Player A Total: " + firstPlayerScore, 30, 430);
@@ -44,6 +45,45 @@ void draw(){
     winnerTextBox("  All Tied Up");
   }
 }
+
+void playerSelector(){
+    if (counter % 2 == 0) {
+      rollPlayerA();
+    }
+    else {
+      rollPlayerB();
+    }
+    counter++;
+}
+
+void rollPlayerA(){
+  //resets score first
+  firstPlayerScore = 0;
+  
+  //actuall roll
+  for (int d = 105; d < 420; d += 105){
+    for (int c = 5; c < 320; c +=105){
+      Die playerA = new Die(c, d);
+      playerA.show();
+      firstPlayerScore += playerA.num;
+      }
+   }
+}
+
+void rollPlayerB(){
+  //resets score first
+  secondPlayerScore = 0;
+  
+  //actuall roll
+  for (int f = 105; f < 420; f += 105){
+    for (int e = 595; e > 320; e = e - 105){
+      Die playerB = new Die(e, f);
+      playerB.show();
+      secondPlayerScore += playerB.num;
+    }
+  }
+}
+
 void mousePressed(){
 	redraw();
 }
