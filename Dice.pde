@@ -4,10 +4,6 @@ int counter = 0;
 int firstPlayerScore = 0;
 int secondPlayerScore = 0;
 
-//variables to track number of wins
-int playerAMoney = 0;
-int playerBMoney = 0;
-
 void setup(){
   //sets up background
   size (700, 520);
