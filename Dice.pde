@@ -27,18 +27,18 @@ void draw(){
   playerSelector();
   
   //prints out each player's score
-  scoreTextBox("Player A Total: " + firstPlayerScore, 30, 430);
-  scoreTextBox("Player B Total: " + secondPlayerScore, 420, 430);
+  scoreBox("Player A Total: " + firstPlayerScore, 30, 430);
+  scoreBox("Player B Total: " + secondPlayerScore, 420, 430);
   
   //prints out which player wins
   if(firstPlayerScore > secondPlayerScore) {
-    winnerTextBox("Player A Wins");
+    winnerBox("Player A Wins");
   }
   else if (firstPlayerScore < secondPlayerScore) {
-    winnerTextBox("Player B Wins");
+    winnerBox("Player B Wins");
   }
   else {
-    winnerTextBox("  All Tied Up");
+    winnerBox("  All Tied Up");
   }
 }
 
@@ -150,14 +150,14 @@ class Die //models one single dice cube
   }
 }
 
-void scoreTextBox(String text, int x, int y){
+void scoreBox(String text, int x, int y){
   fill(255);
   rect(x, y, 250, 50);
   fill(100);
   text(text, x + 75, y + 25);
 }
 
-void winnerTextBox(String text){
+void winnerBox(String text){
   fill(255, 255, 0);
   rect(300, 440, 100, 30);
   fill(0);
