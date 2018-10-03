@@ -150,16 +150,16 @@ class Die //models one single dice cube
   }
 }
 
-void scoreBox(String text, int x, int y){
+void scoreBox(String word, int x, int y){
   fill(255);
   rect(x, y, 250, 50);
   fill(100);
-  text(text, x + 75, y + 25);
+  text(word, x + 75, y + 25);
 }
 
-void winnerBox(String text){
+void winnerBox(String word){
   fill(255, 255, 0);
   rect(300, 440, 100, 30);
   fill(0);
-  text(text, 315, 460);
+  text(word, 315, 460);
 }
